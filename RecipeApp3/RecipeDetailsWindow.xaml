@@ -1,0 +1,13 @@
+﻿<Window x:Class="RecipeApp3.RecipeDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recipe Details" Height="450" Width="600">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="{Binding RecipeName}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding Ingredients}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding Steps}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding TotalCalories}" FontSize="14" FontWeight="Bold" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
