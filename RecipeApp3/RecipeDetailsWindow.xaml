@@ -4,10 +4,24 @@
         Title="Recipe Details" Height="450" Width="600">
     <Grid>
         <StackPanel Margin="10">
-            <TextBlock Text="{Binding RecipeName}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-            <TextBlock Text="{Binding Ingredients}" TextWrapping="Wrap" Margin="0,0,0,10"/>
-            <TextBlock Text="{Binding Steps}" TextWrapping="Wrap"/>
-            <TextBlock Text="{Binding TotalCalories}" FontSize="14" FontWeight="Bold" Margin="0,10,0,0"/>
+            <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="Ingredients:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <TextBlock Text="{Binding IngredientsText}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Steps:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <ListBox ItemsSource="{Binding Steps}" Margin="0,0,0,10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Margin="5" />
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Text="{Binding TotalCaloriesText}" FontSize="14" FontWeight="Bold" Margin="0,10,0,0"/>
+            <TextBlock x:Name="HighCaloriesMessage" Text="{Binding HighCaloriesMessage}" Foreground="Red" Margin="0,5,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

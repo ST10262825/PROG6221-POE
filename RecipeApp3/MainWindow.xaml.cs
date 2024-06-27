@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace RecipeApp3
 {
@@ -13,7 +13,6 @@ namespace RecipeApp3
         {
             InitializeComponent();
             LoadFoodGroupsAndCalories();
-
         }
 
         private void EnterNewRecipe_Click(object sender, RoutedEventArgs e)
@@ -22,18 +21,11 @@ namespace RecipeApp3
             LoadFoodGroupsAndCalories();
         }
 
-        private void DisplayAllRecipes_Click(object sender, RoutedEventArgs e)
-        {
-            recipeManager.DisplayAllRecipes();
-        }
-
-        
+       
 
         private void DisplayRecipeDetails_Click(object sender, RoutedEventArgs e)
         {
-           
-                recipeManager.DisplayRecipeDetails();
-            
+            recipeManager.DisplayRecipeDetails();
         }
 
         private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
@@ -52,18 +44,7 @@ namespace RecipeApp3
             LoadFoodGroupsAndCalories();
         }
 
-        private void ApplyFilters_Click(object sender, RoutedEventArgs e)
-        {
-            string ingredient = IngredientFilterTextBox.Text;
-            string foodGroup = FoodGroupFilterComboBox.SelectedItem as string;
-            if (!int.TryParse(CaloriesFilterComboBox.SelectedItem as string, out int maxCalories))
-            {
-                maxCalories = int.MaxValue;
-            }
-
-            var filteredRecipes = recipeManager.FilterRecipes(ingredient, foodGroup, maxCalories);
-            DisplayFilteredRecipes(filteredRecipes);
-        }
+       
 
         private void LoadFoodGroupsAndCalories()
         {
@@ -76,12 +57,49 @@ namespace RecipeApp3
 
         private void DisplayFilteredRecipes(List<Recipe> recipes)
         {
+            if (recipes.Count == 0)
+            {
+                MessageBox.Show("No recipes matching the filter criteria.", "Filtered Recipes", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             string message = "Filtered Recipes:\n";
             foreach (var recipe in recipes)
             {
                 message += $"{recipe.Name}\n";
             }
             MessageBox.Show(message, "Filtered Recipes", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void FilterByIngredient_Click(object sender, RoutedEventArgs e)
+        {
+            string ingredient = IngredientFilterTextBox.Text;
+            var filteredRecipes = recipeManager.FilterRecipesByIngredient(ingredient);
+            DisplayFilteredRecipes(filteredRecipes);
+        }
+
+        private void FilterByFoodGroup_Click(object sender, RoutedEventArgs e)
+        {
+            string foodGroup = FoodGroupFilterComboBox.SelectedItem as string;
+            var filteredRecipes = recipeManager.FilterRecipesByFoodGroup(foodGroup);
+            DisplayFilteredRecipes(filteredRecipes);
+        }
+
+        private void FilterByMaxCalories_Click(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(CaloriesFilterComboBox.SelectedItem as string, out int maxCalories))
+            {
+                MessageBox.Show("Invalid max calories value.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var filteredRecipes = recipeManager.FilterRecipesByMaxCalories(maxCalories);
+            DisplayFilteredRecipes(filteredRecipes);
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

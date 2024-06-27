@@ -9,26 +9,37 @@
 
             <!-- Buttons for main actions -->
             <Button Content="Enter New Recipe" Click="EnterNewRecipe_Click" Margin="5"/>
-            <Button Content="Display All Recipes" Click="DisplayAllRecipes_Click" Margin="5"/>
+            
             <Button Content="Display Recipe Details" Click="DisplayRecipeDetails_Click" Margin="5"/>
             <Button Content="Scale Recipe" Click="ScaleRecipe_Click" Margin="5"/>
             <Button Content="Reset Quantities" Click="ResetQuantities_Click" Margin="5"/>
             <Button Content="Clear Recipe Data" Click="ClearRecipeData_Click" Margin="5"/>
-            
+            <Button Content="Exit" Click="Exit_Click" Margin="5" Background="#FFC31818"/>
 
             <!-- Filter Options -->
             <TextBlock Text="Filter Recipes" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="10"/>
 
-            <TextBlock Text="Ingredient Name:" Margin="5"/>
-            <TextBox Name="IngredientFilterTextBox" Width="300" Margin="5"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Ingredient Name:" Margin="5" VerticalAlignment="Center"/>
+                <TextBox Name="IngredientFilterTextBox" Width="113" Margin="5"/>
+                <Button Content="Filter by Ingredient" Click="FilterByIngredient_Click" Margin="5"/>
+            </StackPanel>
 
-            <TextBlock Text="Food Group:" Margin="5"/>
-            <ComboBox Name="FoodGroupFilterComboBox" Width="300" Margin="5"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Food Group:" Margin="5" VerticalAlignment="Center"/>
+                <ComboBox Name="FoodGroupFilterComboBox" Width="134" Margin="5"/>
+                <Button Content="Filter by Food Group" Click="FilterByFoodGroup_Click" Margin="5"/>
+            </StackPanel>
 
-            <TextBlock Text="Max Calories:" Margin="5"/>
-            <ComboBox Name="CaloriesFilterComboBox" Width="300" Margin="5"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Max Calories:" Margin="5" VerticalAlignment="Center"/>
+                <ComboBox Name="CaloriesFilterComboBox" Width="123" Margin="5"/>
+                <Button Content="Filter by Max Calories" Click="FilterByMaxCalories_Click" Margin="5"/>
+            </StackPanel>
 
-            <Button Content="Apply Filters" Click="ApplyFilters_Click" Margin="10"/>
+           
+
         </StackPanel>
+
     </Grid>
 </Window>

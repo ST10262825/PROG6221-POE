@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ComboBoxWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DisplayWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,6 +24,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ComboBoxWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DisplayWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\lab_services_student\source\repos\RecipeApp3\RecipeApp3\App.xaml
-51122274737
+6-1835041982
 
-13-1566157973
+14226002607
 198-294894759
-DisplayWindow.xaml;InputWindow.xaml;MainWindow.xaml;RecipeDetailsWindow.xaml;SelectWindow.xaml;
+ComboBoxWindow.xaml;DisplayWindow.xaml;InputWindow.xaml;MainWindow.xaml;RecipeDetailsWindow.xaml;SelectWindow.xaml;
 
-True
+False
 
